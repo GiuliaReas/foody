@@ -2,9 +2,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
 import { Iproduct } from './../models/product';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from './../../environments/environment';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +33,7 @@ export class SearchService {
             });
           })
         )
+        //catchError((error) => )
       );
   }
 }

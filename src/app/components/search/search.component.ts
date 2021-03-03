@@ -1,7 +1,14 @@
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  switchMap,
+} from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 import { Iproduct } from './../../models/product';
-import { Observable } from 'rxjs';
+
 import { SearchService } from './../../services/search.service';
 
 @Component({
@@ -10,14 +17,19 @@ import { SearchService } from './../../services/search.service';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-  products: Observable<Iproduct[]>;
+  products: Iproduct[];
+  myControl = new FormControl();
 
   constructor(private service: SearchService) {}
 
   ngOnInit(): void {
-    this.search('coca');
-  }
-  search(value: string): void {
-    this.products = this.service.getProtucts(value);
+    this.myControl.valueChanges
+      .pipe(
+        filter((res) => res.length > 1),
+        debounceTime(300),
+        distinctUntilChanged(),
+        switchMap((text) => this.service.getProtucts(text))
+      )
+      .subscribe((result) => (this.products = result));
   }
 }

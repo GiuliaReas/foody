@@ -1,1 +1,12 @@
-<pre>{{products | async | json}}</pre>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Product</mat-label>
+    <input #productInput type="text" placeholder="Pick one" aria-label="Product" matInput [formControl]="myControl"
+      [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let product of products">
+        {{product.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
