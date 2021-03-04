@@ -23,3 +23,7 @@ For lack of time, the button to delete the product has not been added
 ## Languages used
 
 Typescript, html, css.
+
+## Study level
+
+I attended a 6 month frontend development bootcamp with Angular, ended 2 month ago
