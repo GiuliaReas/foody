@@ -29,7 +29,7 @@ export class SearchService {
               name: products?.product_name,
               thumbImmagine: products?.selected_images?.front?.thumb?.en,
               smlImmagine: products?.selected_images?.front?.small?.en,
-              nutrientsValues: products?.nutriments,
+              nutrimentsValues: products?.nutriments,
             });
           })
         )

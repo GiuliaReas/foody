@@ -4,5 +4,5 @@ export interface Iproduct {
   name: string;
   thumbImmagine: string;
   smlImmagine: string;
-  nutrientsValues: Inutriments;
+  nutrimentsValues: Inutriments;
 }
