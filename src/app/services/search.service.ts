@@ -11,7 +11,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class SearchService {
   product: any;
-  private searchUrl = environment.searchUrl;
+  readonly searchUrl = environment.searchUrl;
   constructor(private http: HttpClient) {}
 
   getProtucts(value: string): Observable<Iproduct[]> {
