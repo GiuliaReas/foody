@@ -7,8 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  @Input() product: Iproduct;
-  displayedColumns = ['nutriments', 'product1'];
+  @Input() products: Iproduct[];
+  displayedColumns = ['nutriments', 'product1', 'product2'];
 
   constructor() {}
 

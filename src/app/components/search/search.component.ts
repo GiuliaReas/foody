@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   products: Iproduct[];
   myControl = new FormControl();
   subscription: Subscription;
-  selectedProduct: Iproduct;
+  selectedProduct: Iproduct[] = [];
 
   constructor(private service: SearchService) {}
 
@@ -37,8 +37,8 @@ export class SearchComponent implements OnInit, OnDestroy {
       .subscribe((result) => (this.products = result));
   }
 
-  onSelectionChanged($event: MatAutocompleteSelectedEvent): Iproduct {
-    return (this.selectedProduct = $event?.option?.value);
+  onSelectionChanged($event: MatAutocompleteSelectedEvent) {
+    this.selectedProduct.push($event?.option?.value);
   }
 
   ngOnDestroy(): void {
