@@ -3,9 +3,9 @@
     <mat-label>Product</mat-label>
     <input #productInput type="text" placeholder="Pick one" aria-label="Product" matInput [formControl]="myControl"
       [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let product of products">
-        {{product.name}}
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectionChanged($event)">
+      <mat-option *ngFor="let product of products" [value]="product">
+        {{product?.name}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
